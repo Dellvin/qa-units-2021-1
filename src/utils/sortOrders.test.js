@@ -5,7 +5,6 @@ import {getSortFunction} from './sortOrders';
 import {sortTypes} from './sortOrders';
 import {sortOrders} from './sortOrders';
 
-
 describe('sortByItemCount', () => {
 	it('ords are null', () => {
 		const res = sortByItemCount(null, null);
