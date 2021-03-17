@@ -8,7 +8,7 @@ import {sortOrders} from './sortOrders';
 describe('sortByItemCount', () => {
 	it('ords are null', () => {
 		const res = sortByItemCount(null, null);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('null ord1', () => {
@@ -18,7 +18,7 @@ describe('sortByItemCount', () => {
 			items: ['asf', 'aae8fga'],
 		};
 		const res = sortByItemCount(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('null ord2', () => {
@@ -28,244 +28,210 @@ describe('sortByItemCount', () => {
 
 		const ord2 = null;
 		const res = sortByItemCount(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ords', () => {
 		const res = sortByItemCount(undefined, undefined);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ord1', () => {
 		const ord1 = undefined;
-
 		const ord2 = {
 			items: ['asf', 'aae8fga'],
 		};
 		const res = sortByItemCount(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ord2', () => {
 		const ord1 = {
 			items: ['asf', 'aae8fga'],
 		};
-
 		const ord2 = undefined;
 		const res = sortByItemCount(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ords.items', () => {
-
 		const ord1 = {
 			items: undefined,
 		};
-
 		const ord2 = {
 			items: undefined,
 		};
-
 		const res = sortByItemCount(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ords1.items', () => {
-
 		const ord1 = {
 			items: undefined,
 		};
-
 		const ord2 = {
 			items: ['asf', 'aae8fga'],
 		};
-
 		const res = sortByItemCount(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ords2.items', () => {
-
 		const ord1 = {
 			items: ['asf', 'aae8fga'],
 		};
-
 		const ord2 = {
 			items: undefined,
 		};
-
 		const res = sortByItemCount(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('objects1.length < items2.length:', () => {
 		const ord1 = {
 			items: ['object1', 'object2'],
 		};
-
 		const ord2 = {
 			items: ['asf', 'aae8fga', 'alskdufauef'],
 		};
-
 		const res = sortByItemCount(ord1, ord2);
-		expect(res).toEqual(-1);
+		expect(res).toBe(-1);
 	});
 
 	it('objects count', () => {
 		const ord1 = {
 			items: ['object1', 'object2'],
 		};
-
 		const ord2 = {
 			items: ['asf', 'aae8fga'],
 		};
-
 		const res = sortByItemCount(ord1, ord2);
-
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('objects1.length > items2.length:', () => {
 		const ord1 = {
 			items: ['object1', 'object2', 'object3'],
 		};
-
 		const ord2 = {
 			items: ['asf', 'aae8fga'],
 		};
-
 		const res = sortByItemCount(ord1, ord2);
-		expect(res).toEqual(1);
+		expect(res).toBe(1);
 	});
 });
 
 describe('sortByDate', () => {
 	it('null ord', () => {
 		const res = sortByDate(null, null);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('null ord1', () => {
 		const ord1 = null;
-
 		const ord2 = {
 			date: 123,
 		};
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('null ord2', () => {
 		const ord1 = {
 			date: 123,
 		};
-
 		const ord2 = null;
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ords', () => {
 		const res = sortByDate(undefined, undefined);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ord1', () => {
 		const ord1 = undefined;
-
 		const ord2 = {
 			date: 123,
 		};
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ord2', () => {
 		const ord1 = {
 			date: 123,
 		};
-
 		const ord2 = undefined;
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ords.date', () => {
 		const ord1 = {
 			date: undefined,
 		};
-
 		const ord2 = {
 			date: undefined,
 		};
-
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ords1.date', () => {
 		const ord1 = {
 			date: undefined,
 		};
-
 		const ord2 = {
 			date: 123,
 		};
-
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('undefined ords2.date', () => {
 		const ord1 = {
 			date: 123,
 		};
-
 		const ord2 = {
 			date: undefined,
 		};
-
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 
 	it('ords1.date < ords2.date', () => {
 		const ord1 = {
 			date: 123,
 		};
-
 		const ord2 = {
 			date: 202,
 		};
-
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(1);
+		expect(res).toBe(1);
 	});
 
 	it('ords1.date > ords2.date', () => {
 		const ord1 = {
 			date: 202,
 		};
-
 		const ord2 = {
 			date: 123,
 		};
-
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(-1);
+		expect(res).toBe(-1);
 	});
 
 	it('ords1.date === ords2.date', () => {
 		const ord1 = {
 			date: 123,
 		};
-
 		const ord2 = {
 			date: 123,
 		};
-
 		const res = sortByDate(ord1, ord2);
-		expect(res).toEqual(0);
+		expect(res).toBe(0);
 	});
 });
 
@@ -274,12 +240,10 @@ describe('getSortFunction', () => {
 		const res = getSortFunction(null);
 		expect(res).toBeUndefined();
 	});
-
 	it('sortType -> sortTypes.DATE', () => {
 		const res = getSortFunction(sortTypes.DATE);
 		expect(res).toEqual(sortByDate);
 	});
-
 	it('sortType -> sortTypes.COUNT', () => {
 		const res = getSortFunction(sortTypes.COUNT);
 		expect(res).toEqual(sortByItemCount);
@@ -299,7 +263,6 @@ describe('sortOrders', () => {
 				items: ['asf', 'aae8fga'],
 			}
 		];
-
 		const ordsSorted = [
 			{
 				items: ['asf', 'aae8fga'],
@@ -338,8 +301,6 @@ describe('sortOrders', () => {
 		expect(res).toBeUndefined();
 	});
 
-
-
 	it('sortFunction -> sortByDate', () => {
 		const ords = [
 			{
@@ -352,7 +313,6 @@ describe('sortOrders', () => {
 				date: 111,
 			}
 		];
-
 		const ordsSorted = [
 			{
 				date: 111,

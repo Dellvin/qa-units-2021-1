@@ -63,8 +63,6 @@ exports[`Order order.items empty 1`] = `
 
 exports[`Order render no props 1`] = `""`;
 
-exports[`Order undefined order 1`] = `""`;
-
 exports[`Order undefined order.date 1`] = `""`;
 
 exports[`Order undefined order.items 1`] = `

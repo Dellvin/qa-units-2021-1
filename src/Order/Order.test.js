@@ -11,13 +11,10 @@ import {getDate} from "../utils/getDate";
 Enzyme.configure({ adapter: new Adapter() })
 
 describe('Order', () => {
-  getDate.mockReturnValue('26 декабря, пн, 2000 год');
 
-  afterEach(() => {
-    jest.clearAllMocks();
-  });
 
   it('undefined order.shops and order.date', () => {
+    getDate.mockReturnValue('26 декабря, пн, 2000 год');
     const order = {
       date: undefined,
       shop: undefined,
@@ -30,7 +27,7 @@ describe('Order', () => {
   });
 
   it('Order props', () => {
-
+    getDate.mockReturnValue('26 декабря, пн, 2000 год');
     const order = {
       date: 127001,
       shop: 'ozon',
@@ -44,6 +41,7 @@ describe('Order', () => {
   });
 
   it('undefined order.items', () => {
+    getDate.mockReturnValue('26 декабря, пн, 2000 год');
     const order = {
       date: 1541111800,
       shop: 'ozon',
@@ -57,15 +55,17 @@ describe('Order', () => {
   });
 
   it('undefined order', () => {
+    getDate.mockReturnValue('26 декабря, пн, 2000 год');
     const order = undefined;
 
     const output = shallow(
         <Order order={order} />
     );
-    expect(shallowToJson(output)).toMatchSnapshot();
+    expect(output).toEqual({});
   });
 
   it('render no props', () => {
+    getDate.mockReturnValue('26 декабря, пн, 2000 год');
     const output = shallow(
         <Order />
     );
@@ -73,6 +73,7 @@ describe('Order', () => {
   });
 
   it('order.items empty', () => {
+    getDate.mockReturnValue('26 декабря, пн, 2000 год');
     const order = {
       date: 872341,
       shop: 'ozon',
@@ -86,6 +87,7 @@ describe('Order', () => {
   });
 
   it('undefined order.date', () => {
+    getDate.mockReturnValue('26 декабря, пн, 2000 год');
     const order = {
       date: undefined,
     };
@@ -97,6 +99,7 @@ describe('Order', () => {
   });
 
   it('undefined order.shop', () => {
+    getDate.mockReturnValue('26 декабря, пн, 2000 год');
     const order = {
       shop: undefined,
     };
@@ -105,5 +108,8 @@ describe('Order', () => {
         <Order order={order} />
     );
     expect(shallowToJson(output)).toMatchSnapshot()
+  });
+  it('check times', () => {
+    expect(getDate).toHaveBeenCalledTimes(3);
   });
 });
