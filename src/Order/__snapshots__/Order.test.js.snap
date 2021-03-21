@@ -63,8 +63,6 @@ exports[`Order order.items empty 1`] = `
 
 exports[`Order render no props 1`] = `""`;
 
-exports[`Order undefined order.date 1`] = `""`;
-
 exports[`Order undefined order.items 1`] = `
 <div
   className="Order"
@@ -88,7 +86,5 @@ exports[`Order undefined order.items 1`] = `
   />
 </div>
 `;
-
-exports[`Order undefined order.shop 1`] = `""`;
 
 exports[`Order undefined order.shops and order.date 1`] = `""`;

@@ -179,59 +179,15 @@ describe('sortByDate', () => {
 		expect(res).toBe(0);
 	});
 
-	it('undefined ords1.date', () => {
-		const ord1 = {
-			date: undefined,
-		};
-		const ord2 = {
-			date: 123,
-		};
-		const res = sortByDate(ord1, ord2);
-		expect(res).toBe(0);
-	});
-
-	it('undefined ords2.date', () => {
-		const ord1 = {
-			date: 123,
-		};
-		const ord2 = {
-			date: undefined,
-		};
-		const res = sortByDate(ord1, ord2);
-		expect(res).toBe(0);
-	});
-
-	it('ords1.date < ords2.date', () => {
-		const ord1 = {
-			date: 123,
-		};
-		const ord2 = {
-			date: 202,
-		};
-		const res = sortByDate(ord1, ord2);
-		expect(res).toBe(1);
-	});
-
-	it('ords1.date > ords2.date', () => {
-		const ord1 = {
-			date: 202,
-		};
-		const ord2 = {
-			date: 123,
-		};
-		const res = sortByDate(ord1, ord2);
-		expect(res).toBe(-1);
-	});
-
-	it('ords1.date === ords2.date', () => {
-		const ord1 = {
-			date: 123,
-		};
-		const ord2 = {
-			date: 123,
-		};
-		const res = sortByDate(ord1, ord2);
-		expect(res).toBe(0);
+	it.each([
+		[{date: undefined}, {date: 123}, 0],
+		[{date: 123}, {date: undefined}, 0],
+		[{date: undefined}, {date: undefined}, 0],
+		[{date: 123}, {date: 202}, 1],
+		[{date: 202}, {date: 123}, -1],
+		[{date: 123}, {date: 123}, 0],
+	])('items is null', (order1, order2, expected) => {
+		expect((sortByDate(order1, order2))).toEqual(expected);
 	});
 });
 
@@ -299,33 +255,5 @@ describe('sortOrders', () => {
 		const ords = [0, 1];
 		const res = sortOrders(ords, undefined);
 		expect(res).toBeUndefined();
-	});
-
-	it('sortFunction -> sortByDate', () => {
-		const ords = [
-			{
-				date: 101,
-			},
-			{
-				date: 110,
-			},
-			{
-				date: 111,
-			}
-		];
-		const ordsSorted = [
-			{
-				date: 111,
-			},
-			{
-				date: 110,
-			},
-			{
-				date: 101,
-			}
-		];
-		const res = sortOrders(ords, sortByDate);
-		expect(res).toBeUndefined();
-		expect(ords).toEqual(ordsSorted);
 	});
 });

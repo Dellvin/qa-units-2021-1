@@ -8,108 +8,113 @@ import Adapter from 'enzyme-adapter-react-16'
 import Order from "./Order";
 import {getDate} from "../utils/getDate";
 
-Enzyme.configure({ adapter: new Adapter() })
+Enzyme.configure({adapter: new Adapter()})
 
 describe('Order', () => {
 
+    beforeAll(() => getDate.mockReturnValue('26 декабря, пн, 2000 год'));
 
-  it('undefined order.shops and order.date', () => {
-    getDate.mockReturnValue('26 декабря, пн, 2000 год');
-    const order = {
-      date: undefined,
-      shop: undefined,
-    };
+    afterAll(() => jest.clearAllMocks());
 
-    const output = shallow(
-        <Order order={order} />
-    );
-    expect(shallowToJson(output)).toMatchSnapshot();
-  });
+    it('undefined order.shops and order.date', () => {
+        const order = {
+            date: undefined,
+            shop: undefined,
+        };
 
-  it('Order props', () => {
-    getDate.mockReturnValue('26 декабря, пн, 2000 год');
-    const order = {
-      date: 127001,
-      shop: 'ozon',
-      items: ['1234', '2374123']
-    };
+        const output = shallow(
+            <Order order={order}/>
+        );
+        expect(shallowToJson(output)).toMatchSnapshot();
+    });
 
-    const output = shallow(
-        <Order order={order} />
-    );
-    expect(shallowToJson(output)).toMatchSnapshot();
-  });
+    it('Order props', () => {
 
-  it('undefined order.items', () => {
-    getDate.mockReturnValue('26 декабря, пн, 2000 год');
-    const order = {
-      date: 1541111800,
-      shop: 'ozon',
-      items: undefined,
-    };
+        const order = {
+            date: 127001,
+            shop: 'ozon',
+            items: ['1234', '2374123']
+        };
 
-    const output = shallow(
-        <Order order={order} />
-    );
-    expect(shallowToJson(output)).toMatchSnapshot();
-  });
+        const output = shallow(
+            <Order order={order}/>
+        );
+        expect(shallowToJson(output)).toMatchSnapshot();
+    });
 
-  it('undefined order', () => {
-    getDate.mockReturnValue('26 декабря, пн, 2000 год');
-    const order = undefined;
+    it('check times', () => {
+        expect(getDate).toHaveBeenCalledTimes(1);
+    });
 
-    const output = shallow(
-        <Order order={order} />
-    );
-    expect(output).toEqual({});
-  });
+    it('undefined order.items', () => {
+        const order = {
+            date: 1541111800,
+            shop: 'ozon',
+            items: undefined,
+        };
 
-  it('render no props', () => {
-    getDate.mockReturnValue('26 декабря, пн, 2000 год');
-    const output = shallow(
-        <Order />
-    );
-    expect(shallowToJson(output)).toMatchSnapshot();
-  });
+        const output = shallow(
+            <Order order={order}/>
+        );
+        expect(shallowToJson(output)).toMatchSnapshot();
+    });
 
-  it('order.items empty', () => {
-    getDate.mockReturnValue('26 декабря, пн, 2000 год');
-    const order = {
-      date: 872341,
-      shop: 'ozon',
-      items: [],
-    };
+    it('check times', () => {
+        expect(getDate).toHaveBeenCalledTimes(2);
+    });
 
-    const output = shallow(
-        <Order order={order} />
-    );
-    expect(shallowToJson(output)).toMatchSnapshot();
-  });
+    it('undefined order', () => {
+        const order = undefined;
 
-  it('undefined order.date', () => {
-    getDate.mockReturnValue('26 декабря, пн, 2000 год');
-    const order = {
-      date: undefined,
-    };
+        const output = shallow(
+            <Order order={order}/>
+        );
+        expect(output).toEqual({});
+    });
 
-    const output = shallow(
-        <Order order={order} />
-    );
-    expect(shallowToJson(output)).toMatchSnapshot();
-  });
+    it('render no props', () => {
+        const output = shallow(
+            <Order/>
+        );
+        expect(shallowToJson(output)).toMatchSnapshot();
+    });
 
-  it('undefined order.shop', () => {
-    getDate.mockReturnValue('26 декабря, пн, 2000 год');
-    const order = {
-      shop: undefined,
-    };
+    it('order.items empty', () => {
+        const order = {
+            date: 872341,
+            shop: 'ozon',
+            items: [],
+        };
 
-    const output = shallow(
-        <Order order={order} />
-    );
-    expect(shallowToJson(output)).toMatchSnapshot()
-  });
-  it('check times', () => {
-    expect(getDate).toHaveBeenCalledTimes(3);
-  });
+        const output = shallow(
+            <Order order={order}/>
+        );
+        expect(shallowToJson(output)).toMatchSnapshot();
+    });
+
+    it('check times', () => {
+        expect(getDate).toHaveBeenCalledTimes(3);
+    });
+
+    it('undefined order.date', () => {
+        const order = {
+            date: undefined,
+        };
+
+        const output = shallow(
+            <Order order={order}/>
+        );
+      expect(output).toEqual({});
+    });
+
+    it('undefined order.shop', () => {
+        const order = {
+            shop: undefined,
+        };
+
+        const output = shallow(
+            <Order order={order}/>
+        );
+      expect(output).toEqual({});
+    });
 });
